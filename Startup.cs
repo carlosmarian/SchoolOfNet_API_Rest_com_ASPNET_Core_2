@@ -29,6 +29,11 @@ namespace SchoolOfNet_API_Rest_com_ASPNET_Core_2
         {
             services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(Configuration.GetConnectionString("DefaultConnection")) );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            //SWAGGER
+            //Mapear os controllers.
+            services.AddSwaggerGen(config => {
+                config.SwaggerDoc("V1.0", new Microsoft.OpenApi.Models.OpenApiInfo {Title= "API de Produtos . ",Version= "V1.0"});
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,9 +48,23 @@ namespace SchoolOfNet_API_Rest_com_ASPNET_Core_2
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-
             app.UseHttpsRedirection();
+
             app.UseMvc();
+
+            //Informar ao AP.NEt que queremos usar o SWAGGER no projeto.
+            app.UseSwagger(config =>{
+                //Alterar o local onde o arquivo será gerado.
+                //"documentName" representa a versão
+                config.RouteTemplate = "documentacao/{documentName}/swagger.json";
+            });/*Este metodo gera um arquivo JSON(swagger.json)*/
+            //Cria a saida html
+            app.UseSwaggerUI(config =>{
+                //Vai gerar o HTML com base no json padrão do SWagger
+                config.SwaggerEndpoint("/documentacao/v1/swagger.json", "My API V1");
+                //Para deixar o swagger na rota padrão.
+                config.RoutePrefix = string.Empty;
+            });
         }
     }
 }
