@@ -32,7 +32,9 @@ namespace SchoolOfNet_API_Rest_com_ASPNET_Core_2
             //SWAGGER
             //Mapear os controllers.
             services.AddSwaggerGen(config => {
-                config.SwaggerDoc("V1.0", new Microsoft.OpenApi.Models.OpenApiInfo {Title= "API de Produtos . ",Version= "V1.0"});
+                //ATENÇÃO, o primeiro parametro temq ue ser com v minúsculo, senão dar erro.
+                //config.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo {Title= "API de Produtos . ", Version= "V1"});
+                config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title="API DE PRODUTOS",Version = "v1"});
             });
         }
 

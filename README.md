@@ -3,6 +3,15 @@ Projeto usado no curso API Rest com ASP.NET Core - Parte 2
 
 Este projeto Ã© continuaÃ§Ã£o do projeto do curso "Projeto usado no curso API Rest com ASP.NET Core - Parte 1".
 
+Lembrando de >
+*subir o docker do banco:
+    ` docker-compose up`
+*criar o database:
+    `CREATE DATABASE apirest /*!40100 COLLATE 'latin1_general_cs' */;`
+*e executar as migrações:
+    `dotnet ef database update`
+
+
 Documentação da API com SWAGGER.
 
 No nuget.org pesquisar por `Swashbuckle.AspNetCore`, está é a bliblioca que será usada no projeto para auxiliar na documentação com SWAGGER.
@@ -22,7 +31,9 @@ public void ConfigureServices(IServiceCollection services)
     //SWAGGER
     //Mapear os controllers.
     services.AddSwaggerGen(config => {
-        config.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo {Title= "API de Produtos", Version= "V1"});
+        //ATENÇÃO, o primeiro parametro temq ue ser com v minúsculo, senão dar erro.
+        //config.SwaggerDoc("V1", new Microsoft.OpenApi.Models.OpenApiInfo {Title= "API de Produtos . ", Version= "V1"});
+        config.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo {Title="API DE PRODUTOS",Version = "v1"});
     });
 }
 ```
@@ -59,3 +70,6 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     });
 }
 ```
+
+O próximo curso será:
+https://www.schoolofnet.com/curso/aspnet/dotnet-core/api-rest-com-asp-net-core-hateoas/
