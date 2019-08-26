@@ -3,13 +3,14 @@ Projeto usado no curso API Rest com ASP.NET Core - Parte 2
 
 Este projeto Ã© continuaÃ§Ã£o do projeto do curso "Projeto usado no curso API Rest com ASP.NET Core - Parte 1".
 
-Lembrando de >
-*subir o docker do banco:
-    ` docker-compose up`
-*criar o database:
-    `CREATE DATABASE apirest /*!40100 COLLATE 'latin1_general_cs' */;`
-*e executar as migrações:
-    `dotnet ef database update`
+Lembrando de:
+
+    *subir o docker do banco:
+        ` docker-compose up`
+    *criar o database:
+        `CREATE DATABASE apirest /*!40100 COLLATE 'latin1_general_cs' */;`
+    *e executar as migrações:
+        `dotnet ef database update`
 
 
 Documentação da API com SWAGGER.
